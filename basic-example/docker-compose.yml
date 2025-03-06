@@ -40,5 +40,4 @@ volumes:
   jupyterhub-data:
 
 networks:
-  jupyterhub-network:
-    name: jupyterhub-network
+  jupyterhub-network: jupyterhub-network
