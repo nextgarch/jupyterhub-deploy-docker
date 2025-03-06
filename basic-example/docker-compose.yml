@@ -40,5 +40,5 @@ volumes:
   jupyterhub-data:
 
 networks:
-  jupyterhub-network: 
-    driver: bridge
+  jupyterhub-network:
+    name: jupyterhub-network
