@@ -3,6 +3,7 @@
 
 # Configuration file for JupyterHub
 import os
+import shutil
 
 c = get_config()  # noqa: F821
 
@@ -59,3 +60,17 @@ c.NativeAuthenticator.open_signup = True
 admin = os.environ.get("JUPYTERHUB_ADMIN")
 if admin:
     c.Authenticator.admin_users = [admin]
+
+# Spawn a python process for each user when created
+def post_spawn_hook(spawner):
+    docker_user_dir = spawner.home_dir  # Get the user's home directory
+    source_files = [
+        'reference-client.ipynb'
+        'providers.yml',
+    ]
+
+    # Copy the file to the user's directory
+    for this_file in source_files:
+        shutil.copy(os.path.join('/tmp/', this_file), os.path.join(docker_user_dir, this_file))
+
+c.Spawner.post_spawn_hook = post_spawn_hook
