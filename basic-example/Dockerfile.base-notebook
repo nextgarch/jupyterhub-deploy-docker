@@ -4,4 +4,4 @@ FROM quay.io/jupyter/base-notebook:latest
 COPY notebooks/ /home/jovyan/work/
 
 # Ensure the notebook has the correct permissions
-RUN chown jovyan:users: /home/jovyan/ -R
+RUN chown -R jovyan:users /home/jovyan/
