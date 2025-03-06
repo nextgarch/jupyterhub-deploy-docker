@@ -1,0 +1,7 @@
+FROM quay.io/jupyter/base-notebook:latest
+
+# Copy the default notebook to the user's home directory
+COPY notebooks/ /home/jovyan/work/
+
+# Ensure the notebook has the correct permissions
+RUN chown jovyan:users: /home/jovyan/ -R
