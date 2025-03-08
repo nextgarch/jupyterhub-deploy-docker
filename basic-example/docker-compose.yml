@@ -42,4 +42,5 @@ volumes:
 
 networks:
   jupyterhub-network:
-    name: jupyterhub-network
+    # name: jupyterhub-network
+    external: true
